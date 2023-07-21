@@ -9,7 +9,7 @@ public class ContactProgram {
         ConnectDb connectDb = new ConnectDb();
         ManageDb manageDb = new ManageDb();
         connectDb.conn = connectDb.getConnection();
-        manageDb.addContact("Scarlett", "Mora", "scarlett@email.com");
+        manageDb.addContact("", "", "");
 //        manageDb.findContact("Kurt");
     }
 }
