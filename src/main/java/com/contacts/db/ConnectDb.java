@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectDb {
-    public String jdbcUrl = "jdbc:postgresql://localhost:5432/shopme";
-    public String username = "postgres";
-    public String password = "postgres";
+    private String jdbcUrl = "jdbc:postgresql://localhost:5432/shopme";
+    private String username = "postgres";
+    private String password = "postgres";
     public Connection conn;
 
     {
@@ -15,7 +15,6 @@ public class ConnectDb {
             conn = DriverManager.getConnection(jdbcUrl, username, password);
             System.out.println("Connected to database");
 
-            conn.close();
         } catch (SQLException e) {
             System.out.println("Error connecting to database");
             throw new RuntimeException(e);
@@ -24,5 +23,14 @@ public class ConnectDb {
 
     public Connection getConnection() {
         return conn;
+    }
+
+    public void closeConnection() {
+        try {
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println("Error closing connection");
+            throw new RuntimeException(e);
+        }
     }
 }
